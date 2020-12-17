@@ -4,7 +4,7 @@ from .forms import *
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+import numpy as np
 # login view page
 def home(request):
     return render(request, 'home.html', {})
@@ -17,10 +17,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get("email")
-            if User.objects.filter(email=email).exists():
-                raise forms.ValidationError('error')
-            return email
+            email = form.validate_unique()
             messages.success(request, "Account was created for " + username)
             return redirect('login')
 

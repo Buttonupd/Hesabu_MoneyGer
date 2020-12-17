@@ -113,7 +113,8 @@ class MadeSale(models.Model):
     comment = models.CharField(max_length=200, null=True, blank=False)
     date_created = date_created = models.DateTimeField(auto_now_add=True, null=True, blank=False)
 
-
+    def __str__(self):
+        return str(self.juror)
 
     def save(self, *args, **kwargs):
         self.margin = self.sales - Project.objects.last().total
@@ -150,6 +151,9 @@ class MilkCollection(models.Model):
     price_per_month = models.FloatField(null=True)
     your_message = models.TextField(null=True)
 
+    def __str__(self):
+        return str(self.juror)
+        
     def save(self, *args, **kwargs):
         self.price_per_month = self.morning_litres + self.evening_litres * price_per_litre * 30.00
         super().save(*args, **kwargs)

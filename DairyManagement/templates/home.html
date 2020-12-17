@@ -1,9 +1,289 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Dento - Dentist &amp; Medical HTML Template">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
-<html>
-    <div class="main">
-        <div class="submain">
-            <a href="{% url 'register' %}">Register  </a>
-        </div>
+  <!-- Title -->
+  <title>Hesabu Moneyger</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="{% static 'website/img/core-img/favicon.ico' %}">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preload-content">
+      <div id="dento-load"></div>
     </div>
+  </div>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <!-- Top Content -->
+          <div class="col-6 col-md-9 col-lg-8">
+            <div class="top-header-content">
+              <a href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="Ruaka, Carrefour, Nairobi, Kenya"><i class="fa fa-map-marker"></i> <span>Ruaka, Carrefour, Nairobi, Kenya</span></a>
+              <a href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="info@hesabumoneyger.co.ke"><i class="fa fa-envelope"></i> <span>info@hesabumoneyger.co.ke</span></a>
+            </div>
+          </div>
+          <!-- Top Header Social Info -->
+          <div class="col-6 col-md-3 col-lg-4">
+            <div class="top-header-social-info text-right">
+              <a  target="_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="#"target="_blank" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Header End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+      <div class="classy-nav-container breakpoint-off">
+        <div class="container">
+          <!-- Classy Menu -->
+          <nav class="classy-navbar justify-content-between" id="dentoNav">
+
+            <!-- Logo -->
+            <a class="nav-brand" href="{% url 'home' %}"><img src="{% static 'website/img/core-img/logo.png' %}" alt="" width="180px" height="180px"></a>
+
+            <!-- Navbar Toggler -->
+            <div class="classy-navbar-toggler">
+              <span class="navbarToggler"><span></span><span></span><span></span></span>
+            </div>
+
+            <!-- Menu -->
+            <div class="classy-menu">
+
+              <!-- Close Button -->
+              <div class="classycloseIcon">
+                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+              </div>
+
+              <!-- Nav Start -->
+              <div class="classynav">
+                <ul id="nav">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="#">Pages</a>
+                    <ul class="dropdown">
+                      <li><a href="{% url 'home' %}">- Home</a></li>
+                      <li><a href="#">- About Us</a></li>
+                      <li><a href="#">- Service</a></li>
+                      <li><a href="#">- Pricing</a></li>
+                      <li><a href="#">- Blog</a></li>
+                      <li><a href="#">- Blog Details</a></li>
+                      <li><a href="#">- Contact</a></li>
+                      <li><a href="#">- Dropdown</a>
+                        <ul class="dropdown">
+                          <li><a href="#">- Dropdown Item</a></li>
+                          <li><a href="#">- Dropdown Item</a>
+                            <ul class="dropdown">
+                              <li><a href="#">- Even Dropdown</a></li>
+                              <li><a href="#">- Even Dropdown</a></li>
+                              <li><a href="#">- Even Dropdown</a></li>
+                              <li><a href="#">- Even Dropdown</a></li>
+                            </ul>
+                          </li>
+                          <li><a href="#">- Dropdown Item</a></li>
+                          <li><a href="#">- Dropdown Item</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Service</a></li>
+                  <li><a href="#">Pricing</a></li>
+                  <li><a href="#">Blog</a>
+                    <ul class="dropdown">
+                      <li><a href="#">- Blog</a></li>
+                      <li><a href="#">- Blog Details</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+              <!-- Nav End -->
+            </div>
+
+            <!--  Button -->
+            <a href="{% url 'register' %}" class="btn dento-btn booking-btn">Register</a>
+            <a href="{% url 'login' %}" class="btn dento-btn booking-btn">Login</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  {% block content %}
+  {% endblock %}
+  <div class="container-1">
+    <div class="box-1">
+      <img src="{% static 'images/agri1.jpg' %}" alt="Avatar" style="width: 100%;">
+      <h3>Farm Management</h3>
+      <p>Farming can be tedious, whether small, medium or large.
+        Technology is effective in eliminating most of these challenges. Keeping track of your equipment status,
+        re-servicing broken equipments and being every aware of cent spent can be daunting, especially if you consider
+        the bulkiness of farm work itself. We cannot eliminate all your work, but we can help with the most important factor of them all.
+        That is, recording keeping. Track down to your every last spent shilling. We will do maths for you. Go paperless!
+      </p>
+      <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="{% url 'products' %}"> Farm Moneyger </a>
+    </div>
+
+    <div class="box-2">
+      <img src="{% static 'images/diary.jpg' %}" alt="Avatar" style="width: 100%;">
+      <h3>Dairy Farm Management</h3>
+      <p>Dairy Farming isn't any easier. But with a Book Keeping Application, its like you have fifty percent of the work
+        needed to make sure you are not running at a loss, a profit? That would both be our joy. So, get your receipts, and just save it on the cloud.
+        if you are willing to invest. Think of doing it smartly, by automating book record keeping. Keep track of every single cent kept.
+        Go paperless!
+      </p>
+      <a class="btn btn-sm btn-block bg-white" style="color: black;"  href="{{profile}}"> Dairy Moneyger </a>
+    </div>
+
+    <div class="box-3">
+      <img  src="{% static 'images/poultry.jpg' %}" alt="Avatar" style="width: 100%;">
+      <h3>Poultry Farm Management</h3>
+      <p>Poultry Farming requires grit and persistence, this is especially true at both the preparation and the brooding stage.
+        You are constantly purchasing new equipement, vaccines, chicken feed and this list isn't exhaustive. You have no other option to do so
+        if you are willing to invest. Think of doing it smartly, by automating book record keeping. Keep track of every single cent kept.
+        Go paperless!
+      </p>
+      <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="#"> Poultry Management </a>
+    </div>
+  </div>
+
+  <!-- ***** Footer Area Start ***** -->
+  <footer class="footer-area bg-img bg-gradient-overlay" style="background-image: static 'website/img/bg-img/3.jpg' ">
+    <div class="container">
+      <div class="row">
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-footer-widget">
+            <a href="{% url 'home' %}" class="d-block mb-4"><img src="{% static 'website/img/core-img/logo.png' %}" width="180px" height="180px" alt=""></a>
+            <p>We are Hesabu Moneyger, helping go paperless.</p>
+            <div class="footer-contact">
+              <p><i class="icon_pin"></i> Ruaka, Carrefour, Nairobi, Kenya</p>
+              <li><p><i class="icon_phone"></i> +254 740 636 175</p></li>
+              <li><p><i class="icon_phone"></i> +254 751 856 900</p></li>
+              <li><p><i class="icon_phone"></i> 0202428104</p></li>
+              <p><i class="icon_mail"></i> info@hesabumoneyger.co.ke</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget">
+            <!-- Widget Title -->
+            <h5 class="widget-title">What can we do?</h5>
+
+            <!-- Opening Hours -->
+            <ul class="opening-hours">
+              <li><span>Keep track of your margins</span> <span>Automation</span></li>
+              <li><span>Secure your data</span> <span>Security</span></li>
+              <li><span>Data cloud storage</span> <span>1000%</span></li>
+              <li><span>Your paperless business</span> <span>100%</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget">
+            <!-- Widget Title -->
+            <h5 class="widget-title">Quick Link</h5>
+
+            <!-- Quick Links Nav -->
+            <nav>
+              <ul class="quick-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Policy</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Advisors</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Dentist</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Legals</a></li>
+                <li><a href="#">Booking</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Single Footer Widget -->
+        <div class="col-12 col-sm-6 col-lg">
+          <div class="single-footer-widget">
+            <!-- Widget Title -->
+            <h5 class="widget-title">Newsletter</h5>
+
+            <p>We will send out weekly newest article and some great offers</p>
+            <!-- Newsletter Form -->
+            <div class="footer-newsletter-form">
+              <form action="#" method="post">
+                <input type="email" name="nl-email" value="" placeholder="Email Address">
+                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+              </form>
+            </div>
+
+            <!-- Social Info -->
+            <div class="footer-social-info">
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="#"target="_blank" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copywrite Area -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="copywrite-content">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ***** Footer Area End ***** -->
+
+  <!-- ******* All JS ******* -->
+  <!-- jQuery js -->
+  <script src="{% static 'website/js/jquery.min.js' %}"></script>
+  <!-- Popper js -->
+  <script src="{% static 'website/js/popper.min.js' %}"></script>
+  <!-- Bootstrap js -->
+  <script src="{% static 'website/js/bootstrap.min.js' %}"></script>
+  <!-- All js -->
+  <script src="{% static 'website/js/dento.bundle.js' %}"></script>
+  <!-- Active js -->
+  <script src="{% static 'website/js/default-assets/active.js' %}"></script>
+
+</body>
+
 </html>
