@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html></html>
+<head>
+    <title>Total</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+           var empsalary;
+           var totalsalary = 0
+           $('td:nth-child(6)').each(function(){
+                empsalary=$(this).html();
+                totalsalary+=parseInt(empsalary);
+                $('#totalsalary').text(totalsalary);
+           });
+
+        });
+
+
+    </script>
+</head>
+<head>
+    <nav class="navbar" style="margin-left: auto;">
+        <ul class="ul" style="margin-left: auto;">
+            <li class="li"><a href="{% url 'user' %}">Home</a></li>
+            <li class="li"><a href="{% url 'sales'  %}">Sales</a></li>
+            <li class="li"><a href="{% url 'total' %}">Total</a></li>
+            <li class="li"><a href="{% url 'margin' %}">Margin</a></li>
+            <li class="li"><a href="http://127.0.0.1:8000/admin/">Admin Dashboard</a></li>
+        </ul>
+    </nav>
+    <center>
+        <h1>Total Sum</h1>
+    </center>
+    <hr/>
+    <table border="1" style="text-align: center;">
+        <tr>
+            <th>User</th>
+            <th>Product</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        {% for result in Project %}
+        <tr>
+            <td>{{result.posted_by}}</td>
+            <td>{{result.product}}</td>
+            <td>{{result.product_item}}</td>
+            <td>{{result.quantity}}</td>
+            <td>{{result.price}}</td>
+            <td>{{result.total}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="5">Total</td>
+            <td id='totalsalary' style="font-weight: bold;"></td>
+        </tr>
+    </table>
+
+</head>
+</html>

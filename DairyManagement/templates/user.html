@@ -1,0 +1,52 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title class="hesabu">Hesabu Moneyger</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'user_styles.css' %}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@300&display=swap" rel="stylesheet">
+    </head>
+    {% block content %}
+    {%endblock%}
+    <body>
+
+      <div class="container-1">
+        <div class="box-1">
+          <img class="img" src="{% static 'images/agri1.jpg' %}" alt="Avatar" style="width: 100%;">
+          <h3>Farm Management</h3>
+          <p>Farming can be tedious, whether small, medium or large.
+            Technology is effective in eliminating most of these challenges. Keeping track of your equipment status,
+            re-servicing broken equipments and being every aware of cent spent can be daunting, especially if you consider
+            the bulkiness of farm work itself. We cannot eliminate all your work, but we can help with the most important factor of them all.
+            That is, recording keeping. Track down to your every last spent shilling. We will do maths for you. Go paperless!
+          </p>
+          <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="{% url 'options' %}"> Farm Moneyger </a>
+        </div>
+
+        <div class="box-2">
+          <img src="{% static 'images/diary.jpg' %}" alt="Avatar" style="width: 100%;">
+          <h3>Dairy Farm Management</h3>
+          <p>Dairy Farming isn't any easier. But with a Book Keeping Application, its like you have fifty percent of the work
+            needed to make sure you are not running at a loss, a profit? That would both be our joy. So, get your receipts, and just save it on the cloud.
+            if you are willing to invest. Think of doing it smartly, by automating book record keeping. Keep track of every single cent kept.
+            Go paperless!
+          </p>
+          <a class="btn btn-sm btn-danger"  href="#"> Dairy Moneyger </a>
+        </div>
+
+        <div class="box-3">
+          <img  src="{% static 'images/poultry.jpg' %}" alt="Avatar" style="width: 100%;">
+          <h3>Poultry Farm Management</h3>
+          <p>Poultry Farming requires grit and persistence, this is especially true at both the preparation and the brooding stage.
+            You are constantly purchasing new equipement, vaccines, chicken feed and this list isn't exhaustive. You have no other option to do so
+            if you are willing to invest. Think of doing it smartly, by automating book record keeping. Keep track of every single cent kept.
+            Go paperless!
+          </p>
+          <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="#"> Poultry Management </a>
+        </div>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+{% block content %}
+<br>
+
+<div class="row">
+    <!-- <div class="col-md">
+        <div class="card card-body">
+            <h5> Diary Cow Management </h5>
+        </div>
+    </div> -->
+    <div class="col-md">
+        <div class="card card-body">
+            <h5> Dairy Cow Management</h5>
+        </div>
+        <div class="card card-body" style="display: flex;">
+            <table class="table">
+                <tr style="display: flex;">
+                    <th>User</th>
+                    <th>Product</th>
+                    <th>Items</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Date-Created</th>
+                </tr>
+                {% for product in products2 %}
+                    <tr style="display: flex;">
+                        <td>{{product.profile}}</td>
+                        <td>{{product.Product}}</td>
+                        <td>{{product.item}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.total}}</td>
+                        <td>{{product.date_created}}</td>
+
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+        <a class="btn btn-sm btn-danger" href="{%url 'margin' %}">View Your Current Margin</a>
+    </div>
+</div>
+{% endblock content %}
