@@ -10,8 +10,8 @@ from django.conf import settings
 
 class UserProfile(models.Model):
     profile_name = models.OneToOneField(User, unique=True, on_delete=models.CASCADE, null=True, related_name='my_profile')
-    email_field = models.EmailField(null=True, unique=True)
-    name = models.CharField(max_length=30, null=True, unique=True)
+    # email_field = models.EmailField(null=True, unique=True)
+    User._meta.get_field('email')._unique = True
 
 
     # save user profile
@@ -107,6 +107,7 @@ class MadeSale(models.Model):
     )
     month_of_sales =  models.CharField(max_length=10, null=False, blank=False, choices=MONTH_OF_THE_YEAR)
     juror = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
+    profile = models.ForeignKey(UserProfile, null=True, blank=False,  on_delete=models.CASCADE, related_name='profile3')
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=False)
     margin = models.IntegerField(null=True, blank=False)
     sales = models.IntegerField( null=True, blank=False)
@@ -114,7 +115,7 @@ class MadeSale(models.Model):
     date_created = date_created = models.DateTimeField(auto_now_add=True, null=True, blank=False)
 
     def __str__(self):
-        return str(self.juror)
+        return str(self.profile)
 
     def save(self, *args, **kwargs):
         self.margin = self.sales - Project.objects.last().total
@@ -142,17 +143,17 @@ class MilkCollection(models.Model):
     )
 
     juror = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    profile = models.ForeignKey(UserProfile, null=True, blank=False,  on_delete=models.CASCADE, related_name='profile2')
     day_of_the_week = models.CharField(choices=Day_Collected, max_length=10)
     morning_litres = models.FloatField(null=True, default=0.00)
     evening_litres = models.FloatField(null=True, default=0.00)
     total_litres = models.FloatField(null=True, default=0.00)
     price_per_litre = models.FloatField(max_length=30, null=True, blank=False)
-    total_price_per_day = models.FloatField(null=True)
     price_per_month = models.FloatField(null=True)
-    your_message = models.TextField(null=True)
+    total = models.FloatField(null=True)
 
     def __str__(self):
-        return str(self.juror)
+        return str(self.profile)
         
     def save(self, *args, **kwargs):
         self.price_per_month = self.morning_litres + self.evening_litres * price_per_litre * 30.00
@@ -160,4 +161,8 @@ class MilkCollection(models.Model):
 
     def save(self, *args, **kwargs):
         self.total_litres = self.morning_litres + self.evening_litres
+        super().save(*args, **kwargs)
+
+    def get_total(self, *args, **kwargs):
+        self.total = self.morning_litres + self.evening_litres * price_per_litre * 30.00
         super().save(*args, **kwargs)

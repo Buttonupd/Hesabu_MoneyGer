@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'total/', views.SalaryModel, name='total'),
     url(r'margin/', views.margin, name='margin'),
     url(r'sales/', views.add_user_sales, name='sales'),
+    url(r'monthly_total/', views.get_total_month, name='monthlyTotal'),
 ]
 
 if settings.DEBUG:

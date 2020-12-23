@@ -45,7 +45,7 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     messages.success(request, "Logout Successful")
-    return redirect('login')
+    return redirect('home')
 
 # after login userpage
 @login_required
@@ -58,7 +58,7 @@ def userPage(request):
 def add_product(request):
     current_user = request.user
     profiles = UserProfile.get_profile()
-    name =  request.POST.get("profile_name")
+    specific_user = request.POST.get('posted_by')
     for profile in profiles:
         if profile.profile_name.id == current_user.id:
             if request.method == 'POST':
@@ -68,7 +68,7 @@ def add_product(request):
                     upload.posted_by = current_user
                     upload.profile = profile
                     upload.save()
-                    messages.success(request, f'Hi {name}, Your data has successfully been updated' )
+                    messages.success(request, f'Hi {specific_user}, Your data has successfully been updated' )
                     return redirect('addProduct')
             else:
                 form = ProductForm()
@@ -139,6 +139,10 @@ def add_user_sales(request):
             else:
                 form = SalesForm()
             return render(request,'addProduct.html',{"user":current_user,"form":form})
+@login_required
+def get_total_month(request):
+    empobj = MilkCollection.get_total().filter(juror=request.user)
+    return render(request, 'monthly_total.html', {"MilkCollection":empobj} )
 
 
 
