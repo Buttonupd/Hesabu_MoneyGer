@@ -23,12 +23,12 @@ class RegistrationForm(UserCreationForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields =['product', 'product_item', 'quantity', 'price', 'added_month', 'posted_by']
+        fields =['product', 'product_item', 'quantity', 'price', 'added_month']
 
 class SalesForm(forms.ModelForm):
     class Meta:
         model = MadeSale
-        exclude =['project','juror', 'profile']
+        fields =['project', 'month_of_sales', 'sales']
 
 class MilkCollectionForm(forms.ModelForm):
     class Meta:

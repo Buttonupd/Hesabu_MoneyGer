@@ -23,12 +23,11 @@
 <head>
     <nav class="navbar" style="margin-left: auto;">
         <ul class="ul" style="margin-left: auto;">
-            <li class="li"><a href="{% url 'user' %}">Home</a></li>
-            <li class="li"><a href="{% url 'sales'  %}">Sales</a></li>
-            <li class="li"><a href="{% url 'total' %}">Total</a></li>
-            <li class="li"><a href="{% url 'margin' %}">Margin</a></li>
+            <li class="li"><a href="{% url 'DairyManagement:user' %}">Home</a></li>
+            <li class="li"><a href="{% url 'DairyManagement:total' %}">Total</a></li>
+            <li class="li"><a href="{% url 'DairyManagement:margin' %}">Margin</a></li>
             <li class="li"><a href="http://127.0.0.1:8000/admin/">Admin Dashboard</a></li>
-            <li class="li"><a href="{% url 'monthlyTotal' %}">Margin</a></li>
+            <li class="li"><a href="{% url 'DairyManagement:monthlyTotal' %}">MilkTotal</a></li>
         </ul>
     </nav>
     <center>

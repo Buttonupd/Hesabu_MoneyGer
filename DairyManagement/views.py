@@ -4,6 +4,7 @@ from .forms import *
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 import numpy as np
 # login view page
 def home(request):
@@ -19,7 +20,7 @@ def register(request):
             username = form.cleaned_data.get('username')
             email = form.validate_unique()
             messages.success(request, "Account was created for " + username)
-            return redirect('login')
+            return redirect ('DairyManagement:login')
 
     context = {'form': form}
     return render(request, 'register.html', context)
@@ -34,7 +35,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect("user")
+            return redirect("DairyManagement:user")
         else:
             messages.info(request, "Username or password is incorrect")
 
@@ -58,8 +59,8 @@ def userPage(request):
 def add_product(request):
     current_user = request.user
     profiles = UserProfile.get_profile()
-    specific_user = request.POST.get('posted_by')
-    for profile in profiles:
+    productinfo = request.POST.get("product")
+    for profile in profiles: 
         if profile.profile_name.id == current_user.id:
             if request.method == 'POST':
                 form = ProductForm(request.POST)
@@ -68,7 +69,7 @@ def add_product(request):
                     upload.posted_by = current_user
                     upload.profile = profile
                     upload.save()
-                    messages.success(request, f'Hi {specific_user}, Your data has successfully been updated' )
+                    messages.success(request, f'Hello! {productinfo} has successfully been updated' )
                     return redirect('addProduct')
             else:
                 form = ProductForm()
@@ -77,7 +78,7 @@ def add_product(request):
 # users can either add products or milk collection
 @login_required
 def show_options(request):
-    return render(request, 'show_options.html', {})
+    return render(request, 'show_options.html')
 
 # add milk collection data
 @login_required
@@ -112,19 +113,18 @@ def SalaryModel(request):
         empobj = Project.get_projects().filter(posted_by=request.user)
         return render(request, 'total.html', {"Project":empobj} )
 
-# display current margin
+# display current margin not currently working!!!!!
 @login_required(login_url="login")
 def margin(request):
-    empobj = MadeSale.get_sales().filter(juror=request.user)
-    return render(request, 'margin.html', {"MadeSale":empobj} )
+        empobj = MadeSale.get_sales().filter(juror=request.user)
+        return render(request, 'margin.html', {"MadeSale":empobj} )
 
 # calculate user margin
-
 @login_required
-def add_user_sales(request):
+def add_user_sales(request , pk):
     current_user = request.user
+    user_id = MadeSale.objects.get(id=pk)
     profiles = UserProfile.get_profile()
-    name =  request.POST.get("profile_name")
     for profile in profiles:
         if profile.profile_name.id == current_user.id:
             if request.method == 'POST':
@@ -134,14 +134,15 @@ def add_user_sales(request):
                     upload.posted_by = current_user
                     upload.profile = profile
                     upload.save()
-                    messages.success(request, f'Hi {name}, Your data has successfully been updated' )
+                    messages.success(request, f'Hi, Your data has successfully been updated' )
                     return redirect('addProduct')
             else:
                 form = SalesForm()
             return render(request,'addProduct.html',{"user":current_user,"form":form})
+
 @login_required
 def get_total_month(request):
-    empobj = MilkCollection.get_total().filter(juror=request.user)
+    empobj = MilkCollection.objects.get_or_create(juror=request.user)
     return render(request, 'monthly_total.html', {"MilkCollection":empobj} )
 
 

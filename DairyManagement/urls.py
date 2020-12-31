@@ -5,6 +5,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.authtoken.views import obtain_auth_token
+app_name = 'DairyManagement'
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
@@ -13,13 +14,13 @@ urlpatterns = [
     url('logout/', views.logoutUser, name="logout"),
     url(r'^user/', views.userPage, name='user'),
     url(r'^addProduct/', views.add_product, name='addProduct'),
-    url(r'options/', views.show_options, name='options'),
-    url(r'milkData/', views.add_milk, name='milkData'),
-    url(r'products/', views.products, name='products'),
-    url(r'total/', views.SalaryModel, name='total'),
-    url(r'margin/', views.margin, name='margin'),
-    url(r'sales/', views.add_user_sales, name='sales'),
-    url(r'monthly_total/', views.get_total_month, name='monthlyTotal'),
+    url(r'^options/', views.show_options, name='options'),
+    url(r'^milkData/', views.add_milk, name='milkData'),
+    url(r'^products/', views.products, name='products'),
+    url(r'^total/', views.SalaryModel, name='total'),
+    url(r'^margin/', views.margin, name='margin'),
+    url(r'^sales/(?P<pk>\d+)/$', views.add_user_sales, name='sales'),
+    url(r'^monthly_total/', views.get_total_month, name='monthlyTotal'),
 ]
 
 if settings.DEBUG:

@@ -1,15 +1,17 @@
 {% load static %}
-{% block content %}
-<div>
+<!DOCTYPE html>
+<html></html>
+<head>
     <title>Total</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
            var empsalary;
            var totalsalary = 0
-           $('td:nth-child(6)').each(function(){
+           $('td:nth-child(3)').each(function(){
                 empsalary=$(this).html();
-                totalsalary-=parseInt(empsalary);
+                totalsalary+=parseInt(empsalary);
                 $('#totalsalary').text(totalsalary);
            });
 
@@ -17,41 +19,46 @@
 
 
     </script>
-    </div>
-    <div>
-    <nav class="navbar">
-        <ul class="ul">
+</head>
+<head>
+    <nav class="navbar" style="margin-left: auto;">
+        <ul class="ul" style="margin-left: auto;">
+            <li class="li"><a href="{% url 'DairyManagement:user' %}">Home</a></li>
+            <li class="li"><a href="{% url 'DairyManagement:total' %}">Total</a></li>
+            <li class="li"><a href="{% url 'DairyManagement:margin' %}">Margin</a></li>
 
+            
+            <!-- For DevelopmentPurposes -->
+
+            <li class="li"><a href="http://127.0.0.1:8000/admin/">Admin Dashboard</a></li> 
+            <li class="li"><a href="{% url 'DairyManagement:monthlyTotal' %}">MilkTotal</a></li>
         </ul>
     </nav>
-    </div>
-    <div>
     <center>
-        <h1>Margin  </h1>
+        <h1>Total Sum</h1>
     </center>
     <hr/>
-    <table border="1" style="text-align: center;", style="display: flex;">
+    <table border="1" style="text-align: center;">
         <tr>
             <th>User</th>
             <th>Sales</th>
-            <th>Margin</th>
-
+            <th>Current Margin</th>
+            <th>Date Created</th>
         </tr>
         {% for result in MadeSale %}
         <tr>
             <td>{{result.juror}}</td>
             <td>{{result.sales}}</td>
             <td>{{result.margin}}</td>
+            <td>{{result.date_created}}</td>
+            
         </tr>
         {% endfor %}
         <tr>
-            <td colspan="5">Current Margin</td>
+            <td colspan="5">Total</td>
             <td id='totalsalary' style="font-weight: bold;"></td>
         </tr>
     </table>
-</br>
-    <div class="return" style="align-items: center;">
-        <a class="btn btn-sm btn-danger" href="{% url 'home'%}">Return Home</a>
-    </div>
-</div>
-{% endblock %}
+
+</head>
+</html>

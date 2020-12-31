@@ -36,8 +36,8 @@
           <!-- Top Content -->
           <div class="col-6 col-md-9 col-lg-8">
             <div class="top-header-content">
-              <a href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="Ruaka, Carrefour, Nairobi, Kenya"><i class="fa fa-map-marker"></i> <span>Ruaka, Carrefour, Nairobi, Kenya</span></a>
-              <a href="{% url 'home' %}" data-toggle="tooltip" data-placement="bottom" title="info@hesabumoneyger.co.ke"><i class="fa fa-envelope"></i> <span>info@hesabumoneyger.co.ke</span></a>
+              <a href="{% url 'DairyManagement:home' %}" data-toggle="tooltip" data-placement="bottom" title="Ruaka, Carrefour, Nairobi, Kenya"><i class="fa fa-map-marker"></i> <span>Ruaka, Carrefour, Nairobi, Kenya</span></a>
+              <a href="{% url 'DairyManagement:home' %}" data-toggle="tooltip" data-placement="bottom" title="info@hesabumoneyger.co.ke"><i class="fa fa-envelope"></i> <span>info@hesabumoneyger.co.ke</span></a>
             </div>
           </div>
           <!-- Top Header Social Info -->
@@ -63,7 +63,7 @@
           <nav class="classy-navbar justify-content-between" id="dentoNav">
 
             <!-- Logo -->
-            <a class="nav-brand" href="{% url 'home' %}"><img src="{% static 'website/img/core-img/logo.png' %}" alt="" width="180px" height="180px"></a>
+            <a class="nav-brand" href="{% url 'DairyManagement:home' %}"><img src="{% static 'website/img/core-img/logo.png' %}" alt="" width="180px" height="180px"></a>
 
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
@@ -81,10 +81,10 @@
               <!-- Nav Start -->
               <div class="classynav">
                 <ul id="nav">
-                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'DairyManagement:home' %}">Home</a></li>
                   <li><a href="#">Pages</a>
                     <ul class="dropdown">
-                      <li><a href="{% url 'home' %}">- Home</a></li>
+                      <li><a href="{% url 'DairyManagement:home' %}">- Home</a></li>
                       <li><a href="#">- About Us</a></li>
                       <li><a href="#">- Service</a></li>
                       <li><a href="#">- Pricing</a></li>
@@ -124,8 +124,8 @@
             </div>
 
             <!--  Button -->
-            <a  href="{% url 'register' %}" class="btn dento-btn booking-btn">Register</a>
-            <a href="{% url 'login' %}" class="btn dento-btn booking-btn">Login</a>
+            <a  href="{% url 'DairyManagement:register' %}" class="btn dento-btn booking-btn">Register</a>
+            <a href="{% url 'DairyManagement:login' %}" class="btn dento-btn booking-btn">Login</a>
           </nav>
         </div>
       </div>
@@ -145,7 +145,7 @@
         the bulkiness of farm work itself. We cannot eliminate all your work, but we can help with the most important factor of them all.
         That is, recording keeping. Track down to your every last spent shilling. We will do maths for you. Go paperless!
       </p>
-      <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="{% url 'products' %}"> Farm Moneyger </a>
+      <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="{% url 'DairyManagement:products' %}"> Farm Moneyger </a>
     </div>
 
     <div class="box-2">
@@ -178,7 +178,7 @@
         <!-- Single Footer Widget -->
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="single-footer-widget">
-            <a href="{% url 'home' %}" class="d-block mb-4"><img src="{% static 'website/img/core-img/logo.png' %}" width="180px" height="180px" alt=""></a>
+            <a href="{% url 'DairyManagement:home' %}" class="d-block mb-4"><img src="{% static 'website/img/core-img/logo.png' %}" width="180px" height="180px" alt=""></a>
             <p>We are Hesabu Moneyger, helping go paperless.</p>
             <div class="footer-contact">
               <p><i class="icon_pin"></i> Ruaka, Carrefour, Nairobi, Kenya</p>

@@ -23,9 +23,9 @@
             the bulkiness of farm work itself. We cannot eliminate all your work, but we can help with the most important factor of them all.
             That is, recording keeping. Track down to your every last spent shilling. We will do maths for you. Go paperless!
           </p>
-          <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="{% url 'addProduct' %}"> Add </a>
-          <a class="btn btn-sm btn-danger"  href="{% url 'sales' %}"> Add Sales </a>
-          <a class="btn btn-sm btn-danger"  href="{% url 'total' %}"> View Total </a>
+          <a class="btn btn-sm btn-block bg-dark" style="color: black;"  href="{% url 'DairyManagement:addProduct' %}"> Add </a>
+          
+          <a class="btn btn-sm btn-danger"  href="{% url 'DairyManagement:total' %}"> View Total </a>
         </div>
 
         <div class="box-2">
@@ -36,9 +36,9 @@
             if you are willing to invest. Think of doing it smartly, by automating book record keeping. Keep track of every single cent kept.
             Go paperless!
           </p>
-          <a class="btn btn-sm btn-danger"  href="{% url 'milkData' %}"> Add </a>
-          <a class="btn btn-sm btn-danger"  href="{% url 'sales' %}"> Add Sales </a>
-          <a class="btn btn-sm btn-danger"  href="{% url 'total' %}"> View Total </a>
+          <a class="btn btn-sm btn-danger"  href="{% url 'DairyManagement:milkData' %}"> Add </a>
+          
+          <a class="btn btn-sm btn-danger"  href="{% url 'DairyManagement:total' %}"> View Total </a>
         </div>
       </div>
     </body>

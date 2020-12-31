@@ -62,7 +62,7 @@ class Project(models.Model):
     posted_by = models.ForeignKey(User, null=True, blank=False, on_delete=models.CASCADE, related_name='my_user')
     added_month = models.CharField(max_length=10, null=True, blank=False, choices=MONTH_OF_THE_YEAR)
     profile = models.ForeignKey(UserProfile, null=True, blank=False,  on_delete=models.CASCADE, related_name='his_user')
-    product = models.CharField(max_length=20, null=True, blank=False )
+    product = models.CharField(max_length=20, null=True, blank=False , unique=True)
     product_item = models.CharField(max_length=20, null=True, blank=False )
     quantity = models.IntegerField(null=True, blank=False)
     price = models.IntegerField(null=True, blank=False )
@@ -106,9 +106,9 @@ class MadeSale(models.Model):
         ('Decemeber', 'Decemeber')
     )
     month_of_sales =  models.CharField(max_length=10, null=False, blank=False, choices=MONTH_OF_THE_YEAR)
-    juror = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
+    juror = models.ForeignKey(User, null=True, blank=False, on_delete=models.CASCADE,)
     profile = models.ForeignKey(UserProfile, null=True, blank=False,  on_delete=models.CASCADE, related_name='profile3')
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=False)
+    project = models.ForeignKey(Project, to_field='product', null=True, blank=False, on_delete=models.CASCADE)
     margin = models.IntegerField(null=True, blank=False)
     sales = models.IntegerField( null=True, blank=False)
     comment = models.CharField(max_length=200, null=True, blank=False)
@@ -118,10 +118,13 @@ class MadeSale(models.Model):
         return str(self.profile)
 
     def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
         self.margin = self.sales - Project.objects.last().total
         if self.sales > self.margin:
 
-            self.margin =  self.margin
+            self.margin =  self.margin 
         else:
             -self.margin
         return super().save( *args, **kwargs)
